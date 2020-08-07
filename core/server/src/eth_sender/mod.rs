@@ -395,7 +395,7 @@ impl<ETH: EthereumInterface, DB: DatabaseAccess> ETHSender<ETH, DB> {
         let gas_price = tx.gas_price / (1_000_000_000);
         format!(
             "<hash: {:#x}; gas price: {} gwei; nonce: {}>",
-            tx.hash, gas_price, tx.nonce, self.ethereum.
+            tx.hash, gas_price, tx.nonce,
         )
     }
 
