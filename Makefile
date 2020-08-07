@@ -213,6 +213,8 @@ ifeq (dev,$(ZKSYNC_ENV))
 stop:
 else ifeq (ci,$(ZKSYNC_ENV))
 stop:
+else ifeq (evrynet,$(ZKSYNC_ENV))
+stop:
 else
 stop: confirm_action stop-provers stop-server stop-nginx
 endif
