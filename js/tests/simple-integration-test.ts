@@ -20,9 +20,9 @@ const VERIFY_TIMEOUT = 1200000; // 2 minutes in ms.
 const network = "evrynet"
 console.log("Running integration test on the ", network, " network");
 const ethersProvider = new ethers.providers.JsonRpcProvider(WEB3_URL);
-if (network == "localhost") {
-    ethersProvider.pollingInterval = 100;
-}
+// if (network == "localhost") {
+//     ethersProvider.pollingInterval = 100;
+// }
 
 let syncProvider: Provider;
 
