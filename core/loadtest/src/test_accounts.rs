@@ -157,7 +157,7 @@ impl TestAccount {
             0, // ETH
             "ETH",
             amount,
-            BigUint::from(2278235392u32),
+            BigUint::from(100000u32),
             &to,
             None,
             true,

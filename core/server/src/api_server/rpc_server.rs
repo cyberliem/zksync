@@ -837,9 +837,8 @@ impl Rpc for RpcApp {
                     provided_fee.clone() * BigUint::from(105u32) / BigUint::from(100u32);
                 if required_fee.total_fee >= scaled_provided_fee {
                     warn!(
-                        "User provided fee is too low, required: {:?}, provided: {} (scaled: {}), token: {:?}",
-                        required_fee, provided_fee, scaled_provided_fee, token
-                    );
+                        "User provided fee is too low, required: {:?}, provided: {} (scaled: {}), token: {:?}, total_fee {}",
+                        required_fee, provided_fee, scaled_provided_fee, token, required_fee.total_fee
                     return Err(Error {
                         code: RpcErrorCodes::from(TxAddError::TxFeeTooLow).into(),
                         message: TxAddError::TxFeeTooLow.to_string(),
