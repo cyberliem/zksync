@@ -83,6 +83,7 @@ pub fn get_exodus_verification_key_path() -> PathBuf {
 pub fn get_block_verification_key_path(block_chunks: usize) -> PathBuf {
     let mut key = get_keys_root_dir();
     key.push(&format!("verification_block_{}.key", block_chunks));
+    println!("verification_block file {}",key.display());
     key
 }
 
