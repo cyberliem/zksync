@@ -828,25 +828,26 @@ impl Rpc for RpcApp {
         let ticker_request_sender = self.ticker_request_sender.clone();
         let ops_counter = self.ops_counter.clone();
         let mempool_resp = async move {
-            if let Some((tx_type, token, address, provided_fee)) = tx_fee_info {
-                let required_fee =
-                    Self::ticker_request(ticker_request_sender, tx_type, address, token.clone())
-                        .await?;
-                // We allow fee to be 5% off the required fee
-                let scaled_provided_fee =
-                    provided_fee.clone() * BigUint::from(105u32) / BigUint::from(100u32);
-                if required_fee.total_fee >= scaled_provided_fee {
-                    warn!(
-                        "User provided fee is too low, required: {:?}, provided: {} (scaled: {}), token: {:?}, total_fee {}",
-                        required_fee, provided_fee, scaled_provided_fee, token, required_fee.total_fee
-                    );
-                    return Err(Error {
-                        code: RpcErrorCodes::from(TxAddError::TxFeeTooLow).into(),
-                        message: TxAddError::TxFeeTooLow.to_string(),
-                        data: None,
-                    });
-                }
-            }
+            //skip checking fee for nowssssss
+//            if let Some((tx_type, token, address, provided_fee)) = tx_fee_info {
+//                let required_fee =
+//                    Self::ticker_request(ticker_request_sender, tx_type, address, token.clone())
+//                        .await?;
+//                // We allow fee to be 5% off the required fee
+//                let scaled_provided_fee =
+//                    provided_fee.clone() * BigUint::from(105u32) / BigUint::from(100u32);
+//                if required_fee.total_fee >= scaled_provided_fee {
+//                    warn!(
+//                        "User provided fee is too low, required: {:?}, provided: {} (scaled: {}), token: {:?}, total_fee {}",
+//                        required_fee, provided_fee, scaled_provided_fee, token, required_fee.total_fee
+//                    );
+//                    return Err(Error {
+//                        code: RpcErrorCodes::from(TxAddError::TxFeeTooLow).into(),
+//                        message: TxAddError::TxFeeTooLow.to_string(),
+//                        data: None,
+//                    });
+//                }
+//            }
 
             let verified_tx = verify_tx_info_message_signature(
                 &tx,
